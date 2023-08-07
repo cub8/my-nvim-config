@@ -150,7 +150,7 @@ return {
       "MunifTanjim/nui.nvim",
     },
     config = function ()
-      local neotree = require("neo-tree")
+      require("neo-tree")
     end
   },
   -- Bufferline
@@ -163,7 +163,7 @@ return {
     config = function()
       local config = require("bufferline")
       local map_gotobuffer = function(num)
-       keymap.set("n", "<leader>" .. num,  ":BufferLineGoToBuffer " .. num .. "<cr>")
+       keymap.set("n", "<A-" .. num .. ">",  ":BufferLineGoToBuffer " .. num .. "<cr>")
       end
 
       config.setup({})

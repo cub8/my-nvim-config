@@ -12,3 +12,6 @@ keymap.set({"n", "x"}, "cv", '"+p')
 -- select all text in current buffer
 keymap.set("n", "<leader>a", ":keepumps normal! ggVG<cr>")
 
+-- leave terminal mode
+keymap.set("t", "<esc>", "<C-\\><C-n>")
+
