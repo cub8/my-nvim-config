@@ -133,7 +133,16 @@ return {
       "nvim-lua/plenary.nvim",
     },
     config = function()
+      local telescope = require("telescope")
       local builtin = require("telescope.builtin")
+
+      telescope.setup({
+        pickers = {
+          find_files = {
+            hidden = true
+          }
+        }
+      })
 
       keymap.set("n", "<space>ff", builtin.find_files)
       keymap.set("n", "<space>fg", builtin.live_grep)
