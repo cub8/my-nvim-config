@@ -159,7 +159,14 @@ return {
       "MunifTanjim/nui.nvim",
     },
     config = function ()
-      require("neo-tree")
+      local neotree = require("neo-tree")
+
+      neotree.setup({
+        close_if_last_window = true,
+        window = {
+          position = "right",
+        },
+      })
 
       keymap.set({"v", "n"}, "<space>b", ":Neotree toggle<cr>")
     end
