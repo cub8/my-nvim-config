@@ -162,7 +162,6 @@ return {
       local neotree = require("neo-tree")
 
       neotree.setup({
-        close_if_last_window = true,
         window = {
           position = "right",
         },
@@ -187,7 +186,7 @@ return {
       config.setup({})
       keymap.set("n", "<S-Right>",  ":bNext<cr>")
       keymap.set("n", "<S-Left>",   ":bprevious<cr>")
-      keymap.set("n", "<leader>d",  ":bdelete<cr>")
+      keymap.set("n", "<leader>d",  ":Neotree close<cr> :bdelete<cr>")
 
       for i = 1, 10, 1 do
         map_gotobuffer(i)

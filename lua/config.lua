@@ -15,3 +15,5 @@ opt.relativenumber = true
 -- Clipboard
 opt.clipboard = "unnamedplus"
 
+vim.cmd([[autocmd FileType ruby setlocal indentkeys-=.]])
+
