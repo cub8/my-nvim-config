@@ -29,7 +29,7 @@ return {
     config = function()
       local lualine = require("lualine")
 
-      lualine.setup()
+      lualine.setup({})
     end
   },
   -- Treesitter
@@ -38,6 +38,7 @@ return {
     build = ":TSUpdate",
     dependencies = {
       "RRethy/nvim-treesitter-endwise",
+      "HiPhish/nvim-ts-rainbow2",
     },
     config = function()
       local configs = require("nvim-treesitter.configs")
@@ -71,6 +72,11 @@ return {
         endwise = {
           enable = true
         },
+        rainbow = {
+          enable = true,
+          query = 'rainbow-parens',
+          strategy = require("ts-rainbow").strategy.global,
+        }
       })
     end,
     init = function()
@@ -85,6 +91,7 @@ return {
       require("mini.pairs").setup()
       require("mini.cursorword").setup()
       require("mini.comment").setup()
+      require("mini.move").setup()
     end
   },
   -- Alpha
@@ -116,13 +123,6 @@ return {
       })
 
       keymap.set("n","<leader>t", require("whitespace-nvim").trim)
-    end
-  },
-  -- Pair brackets
-  {
-    'fedepujol/bracketpair.nvim',
-    config = function()
-      require("bracketpair")
     end
   },
   -- Telescope, remember to install ripgrep!!!
@@ -160,6 +160,8 @@ return {
     },
     config = function ()
       require("neo-tree")
+
+      keymap.set({"v", "n"}, "<space>b", ":Neotree toggle<cr>")
     end
   },
   -- Bufferline
@@ -290,6 +292,16 @@ return {
         end,
       })
     end,
-  }
+  },
+  -- Full signature help
+  {
+    "folke/neodev.nvim",
+    config = function()
+      require("neodev").setup({})
+    end
+  },
+  -- Ruby related packages
+  { "vim-ruby/vim-ruby" },
+  { "tpope/vim-rails" },
 }
 
