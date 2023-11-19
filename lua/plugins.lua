@@ -44,7 +44,10 @@ return {
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
+        modules = {},
+        auto_install = true,
         sync_install = false,
+        ignore_install = {},
         ensure_installed = {
           -- nvim
           "vim", "vimdoc", "lua",
@@ -106,23 +109,6 @@ return {
       local dashboard = require("alpha.themes.dashboard")
 
       alpha.setup(dashboard.opts)
-    end
-  },
-  -- Better whitespace
-  {
-    "johnfrankmorgan/whitespace.nvim",
-    config = function()
-      require("whitespace-nvim").setup({
-        highlight = "DiffDelete",
-        ignored_filetypes = {
-          "TelescopePrompt",
-          "Trouble",
-          "help",
-        },
-        ignore_terminal = true,
-      })
-
-      keymap.set("n","<leader>t", require("whitespace-nvim").trim)
     end
   },
   -- Telescope, remember to install ripgrep!!!
@@ -209,6 +195,16 @@ return {
 
       gitsigns.setup()
     end
+  },
+  -- show key shortcut for command
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function ()
+      vim.o.timeout = true
+      vim.o.timeout = 300
+    end,
+    opts = {}
   },
   -- LS configs
   {
