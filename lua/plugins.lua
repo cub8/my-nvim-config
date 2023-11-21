@@ -1,12 +1,12 @@
 local keymap = vim.keymap
 
 return {
-	-- Editor theme
-	{
-		"rebelot/kanagawa.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
+  -- Editor theme
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
       local kanagawa = require("kanagawa")
 
       kanagawa.setup({
@@ -17,9 +17,9 @@ return {
         theme = "wave",
       })
 
-			vim.cmd("colorscheme kanagawa")
-		end
-	},
+      vim.cmd("colorscheme kanagawa")
+    end
+  },
   -- Lualine
   {
     "nvim-lualine/lualine.nvim",
@@ -144,7 +144,7 @@ return {
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
-    config = function ()
+    config = function()
       local neotree = require("neo-tree")
 
       neotree.setup({
@@ -153,7 +153,7 @@ return {
         },
       })
 
-      keymap.set({"v", "n"}, "<space>b", ":Neotree toggle<cr>")
+      keymap.set({ "v", "n" }, "<space>b", ":Neotree toggle<cr>")
     end
   },
   -- Bufferline
@@ -166,15 +166,15 @@ return {
     config = function()
       local config = require("bufferline")
       local map_gotobuffer = function(num)
-       keymap.set("n", "<A-" .. num .. ">",  ":BufferLineGoToBuffer " .. num .. "<cr>")
+        keymap.set("n", "<leader>" .. num, ":BufferLineGoToBuffer " .. num .. "<cr>")
       end
 
       config.setup({})
-      keymap.set("n", "<S-Right>",  ":bNext<cr>")
-      keymap.set("n", "<S-Left>",   ":bprevious<cr>")
-      keymap.set("n", "<leader>d",  ":Neotree close<cr> :bdelete<cr>")
+      keymap.set("n", "<S-Right>", ":bnext<cr>")
+      keymap.set("n", "<S-Left>", ":bprevious<cr>")
+      keymap.set("n", "<leader>d", ":Neotree close<cr> :bdelete<cr>")
 
-      for i = 1, 10, 1 do
+      for i = 1, 9, 1 do
         map_gotobuffer(i)
       end
     end
@@ -200,7 +200,7 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    init = function ()
+    init = function()
       vim.o.timeout = true
       vim.o.timeout = 300
     end,
@@ -218,7 +218,7 @@ return {
     dependencies = {
       "rafamadriz/friendly-snippets",
     },
-    config = function ()
+    config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
     end
   },
@@ -306,4 +306,3 @@ return {
   { "vim-ruby/vim-ruby" },
   { "tpope/vim-rails" },
 }
-

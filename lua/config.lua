@@ -1,5 +1,3 @@
-local g = vim.g
-local o = vim.o
 local opt = vim.opt
 
 -- Indentations
@@ -15,5 +13,8 @@ opt.relativenumber = true
 -- Clipboard
 opt.clipboard = "unnamedplus"
 
-vim.cmd([[autocmd FileType ruby setlocal indentkeys-=.]])
+-- Autoformat
+vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
 
+-- I had some issues with Ruby indentations I guess? I don't remember
+vim.cmd([[autocmd FileType ruby setlocal indentkeys-=.]])
